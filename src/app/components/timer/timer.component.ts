@@ -1,5 +1,6 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Component, DestroyRef, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { GameService } from '../../services/game.service';
+import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 
 @Component({
   selector: 'app-timer',
@@ -15,12 +16,15 @@ export class TimerComponent implements OnInit {
   display;
   interval;
 
-  constructor(private gameService: GameService) {
+  constructor(
+    private gameService: GameService,
+    private destroyRef: DestroyRef,
+  ) {
     this.generateDisplay(this.milliseconds);
   }
 
   ngOnInit() {
-    this.gameService.gameState.subscribe((state) => {
+    this.gameService.gameState.pipe(takeUntilDestroyed(this.destroyRef)).subscribe((state) => {
       switch (state) {
         case 'GAME_START': {
           this.beginCountdown();

@@ -1,4 +1,5 @@
-import { Component, Input } from '@angular/core';
+import { Component } from '@angular/core';
+import { RobotService } from '../../services/robot.service';
 
 @Component({
   selector: 'app-robot',
@@ -8,5 +9,5 @@ import { Component, Input } from '@angular/core';
   styleUrl: './robot.component.scss',
 })
 export class RobotComponent {
-  @Input() orientation: number = 0;
+  constructor(public robotService: RobotService) {}
 }

@@ -12,24 +12,10 @@ import { PositionXY } from '../../typings/generic-interfaces';
   styleUrl: './gridboard.component.scss',
 })
 export class GridboardComponent {
-  @Input() gridSize: PositionXY = { x: 5, y: 5 };
+  protected readonly Array = Array;
 
-  private readonly _xGrid = [];
-  private readonly _yGrid = [];
+  @Input() gridSize: PositionXY = { x: 5, y: 5 };
 
   @ContentChild(TemplateRef)
   templateRef: TemplateRef<any>;
-
-  constructor() {
-    this._xGrid = new Array(this.gridSize.x);
-    this._yGrid = new Array(this.gridSize.y);
-  }
-
-  get xGrid() {
-    return this._xGrid;
-  }
-
-  get yGrid() {
-    return this._yGrid;
-  }
 }

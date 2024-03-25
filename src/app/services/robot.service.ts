@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Controls } from '../typings/generic-types';
 import { PositionXY } from '../typings/generic-interfaces';
+import { Subject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
@@ -8,9 +9,14 @@ import { PositionXY } from '../typings/generic-interfaces';
 export class RobotService {
   private _robotPOS: PositionXY = { x: -1, y: -1 };
   private _robotOrientation: number = 0;
+  private _robotPOSChange: Subject<boolean> = new Subject<boolean>();
 
   get robotPOS() {
     return this._robotPOS;
+  }
+
+  get robotPOSChange() {
+    return this._robotPOSChange.asObservable();
   }
 
   setRobotPOS(value: PositionXY) {
@@ -57,6 +63,7 @@ export class RobotService {
         return;
       case 'FORWARD': {
         changePosition();
+        this._robotPOSChange.next(true);
         return;
       }
     }
