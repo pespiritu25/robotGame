@@ -1,0 +1,8 @@
+
+<h1 mat-dialog-title>GAME OVER</h1>
+<mat-dialog-content>
+  <ng-container *ngIf="data.score > 0">
+    <app-add-to-leaderboard [userScore]="data.score" />
+  </ng-container>
+  <button mat-flat-button color="warn" mat-dialog-close>CLOSE</button>
+</mat-dialog-content>

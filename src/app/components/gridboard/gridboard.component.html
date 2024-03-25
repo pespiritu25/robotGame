@@ -1,0 +1,9 @@
+<div class="grid">
+  <div class="column" *ngFor="let x of xGrid; let xIndex = index">
+    <div class="row" *ngFor="let y of yGrid; let yIndex = index">
+      <div class="box">
+        <ng-template *ngTemplateOutlet="templateRef; context : {xBoxPOS: xIndex, yBoxPOS: yIndex}"></ng-template>
+      </div>
+    </div>
+  </div>
+</div>

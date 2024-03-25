@@ -1,0 +1,10 @@
+.scoreboard {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  grid-gap: 10px;
+
+  h1 {
+    margin: 0;
+  }
+}

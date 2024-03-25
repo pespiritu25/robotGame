@@ -1,0 +1,28 @@
+.main {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  background-color: #303030;
+}
+
+.game-info {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  grid-gap: 50px;
+  margin: 10px;
+}
+
+app-robot {
+  position: absolute;
+  left: 7px;
+  top: 6px;
+}
+
+app-target {
+  position: absolute;
+  left: 7px;
+  top: 6px;
+}

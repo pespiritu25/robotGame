@@ -1,0 +1,29 @@
+<div class="controls">
+  <ng-container *ngIf="controlService.controlUIMode === 'START'">
+    <button mat-mini-fab color="primary" (click)="currentGameControlInput.emit('START')">
+      <mat-icon>play_circle</mat-icon>
+    </button>
+  </ng-container>
+
+
+  <ng-container *ngIf="controlService.controlUIMode === 'GAME'">
+    <button mat-mini-fab color="primary" (click)="currentGameControlInput.emit('ROTATE_LEFT')">
+      <mat-icon>rotate_left</mat-icon>
+    </button>
+
+    <button mat-mini-fab color="primary" (click)="currentGameControlInput.emit('FORWARD')">
+      <mat-icon>keyboard_double_arrow_up</mat-icon>
+    </button>
+
+    <button mat-mini-fab color="primary" (click)="currentGameControlInput.emit('ROTATE_RIGHT')">
+      <mat-icon>rotate_right</mat-icon>
+    </button>
+  </ng-container>
+
+  <ng-container *ngIf="controlService.controlUIMode === 'RESET'">
+    <button mat-mini-fab color="primary" (click)="currentGameControlInput.emit('RESET')">
+      <mat-icon>restart_alt</mat-icon>
+    </button>
+  </ng-container>
+
+</div>
