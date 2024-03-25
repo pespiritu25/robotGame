@@ -1,28 +1,26 @@
-import {Injectable} from "@angular/core";
-import {GameOverComponent} from "../components/game-over/game-over.component";
-import {MatDialog} from "@angular/material/dialog";
-import {GameOverDialogData, PositionXY} from "../typings/generic-interfaces";
-import {RobotService} from "./robot.service";
-import {ControlService} from "./control.service";
-import {TargetService} from "./target.service";
-import {Subject} from "rxjs";
-import {GameState} from "../typings/generic-types";
+import { Injectable } from '@angular/core';
+import { GameOverComponent } from '../components/game-over/game-over.component';
+import { MatDialog } from '@angular/material/dialog';
+import { GameOverDialogData, PositionXY } from '../typings/generic-interfaces';
+import { RobotService } from './robot.service';
+import { ControlService } from './control.service';
+import { TargetService } from './target.service';
+import { Subject } from 'rxjs';
+import { GameState } from '../typings/generic-types';
 
 @Injectable({
   providedIn: 'root',
 })
-
 export class GameService {
-
   private _currentGameScore = 0;
-  private _gameState:Subject<GameState> = new Subject();
+  private _gameState: Subject<GameState> = new Subject();
 
-
-  constructor(private matDialog: MatDialog,
-              private robotService: RobotService,
-              private targetService: TargetService,
-              private controlService: ControlService) {
-  }
+  constructor(
+    private matDialog: MatDialog,
+    private robotService: RobotService,
+    private targetService: TargetService,
+    private controlService: ControlService,
+  ) {}
 
   get gameState() {
     return this._gameState.asObservable();
@@ -35,7 +33,7 @@ export class GameService {
   private initializeGameOverModal() {
     this.matDialog.open<GameOverComponent, GameOverDialogData>(GameOverComponent, {
       disableClose: true,
-      data:{
+      data: {
         score: this._currentGameScore,
       },
     });
@@ -68,10 +66,10 @@ export class GameService {
   checkOutOfBounds(gridSize: PositionXY) {
     const hitEdge = (min: number, max: number) => {
       return min < 0 || min > max;
-    }
+    };
 
-    const isEdgeCollide = hitEdge(this.robotService.robotPOS.x, gridSize.x - 1) ||
-      hitEdge(this.robotService.robotPOS.y, gridSize.y - 1);
+    const isEdgeCollide =
+      hitEdge(this.robotService.robotPOS.x, gridSize.x - 1) || hitEdge(this.robotService.robotPOS.y, gridSize.y - 1);
 
     if (isEdgeCollide) {
       this.gameFinished();
@@ -79,7 +77,10 @@ export class GameService {
   }
 
   checkTargetHit(gridSize: PositionXY) {
-    if (this.robotService.robotPOS.x === this.targetService.targetPOS.x && this.robotService.robotPOS.y === this.targetService.targetPOS.y) {
+    if (
+      this.robotService.robotPOS.x === this.targetService.targetPOS.x &&
+      this.robotService.robotPOS.y === this.targetService.targetPOS.y
+    ) {
       this.targetService.setNewTargetPOS(gridSize);
       this._currentGameScore++;
     }

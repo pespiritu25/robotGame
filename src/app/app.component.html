@@ -2,14 +2,14 @@
   <!--  GAME INFO-->
   <div class="game-info">
     <app-scoreboard />
-    <app-timer [milliseconds]="timerMilliseconds"
-               (finished)="gameService.gameFinished()"/>
+    <app-timer [milliseconds]="timerMilliseconds" (finished)="gameService.gameFinished()" />
   </div>
 
   <!--  Game Board-->
   <app-gridboard [gridSize]="gridSize">
     <ng-template let-x="xBoxPOS" let-y="yBoxPOS">
-      <app-robot *ngIf="x === robotService.robotPOS.x && y === robotService.robotPOS.y"
+      <app-robot
+        *ngIf="x === robotService.robotPOS.x && y === robotService.robotPOS.y"
         [orientation]="robotService.robotOrientation"
       />
 

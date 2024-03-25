@@ -8,10 +8,9 @@ describe('ScoreboardComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [ScoreboardComponent]
-    })
-    .compileComponents();
-    
+      imports: [ScoreboardComponent],
+    }).compileComponents();
+
     fixture = TestBed.createComponent(ScoreboardComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();

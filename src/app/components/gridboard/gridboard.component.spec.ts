@@ -8,10 +8,9 @@ describe('GridboardComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [GridboardComponent]
-    })
-    .compileComponents();
-    
+      imports: [GridboardComponent],
+    }).compileComponents();
+
     fixture = TestBed.createComponent(GridboardComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();

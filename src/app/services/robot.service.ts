@@ -1,14 +1,12 @@
-import {Injectable} from "@angular/core";
-import {Controls} from "../typings/generic-types";
-import {PositionXY} from "../typings/generic-interfaces";
+import { Injectable } from '@angular/core';
+import { Controls } from '../typings/generic-types';
+import { PositionXY } from '../typings/generic-interfaces';
 
 @Injectable({
   providedIn: 'root',
 })
-
 export class RobotService {
-
-  private _robotPOS: PositionXY = {x: -1, y:-1};
+  private _robotPOS: PositionXY = { x: -1, y: -1 };
   private _robotOrientation: number = 0;
 
   get robotPOS() {
@@ -26,7 +24,7 @@ export class RobotService {
   manageRobotControl(control: Controls) {
     const changeRotation = (value: number) => {
       this._robotOrientation += value;
-    }
+    };
 
     const changePosition = () => {
       // North
@@ -48,20 +46,16 @@ export class RobotService {
       if ([270, -90].includes(this._robotOrientation)) {
         this._robotPOS.x--;
       }
-    }
+    };
 
     switch (control) {
-      case "ROTATE_RIGHT":
-        this._robotOrientation <= 180
-          ? changeRotation(90)
-          : changeRotation(this._robotOrientation * -1);
+      case 'ROTATE_RIGHT':
+        this._robotOrientation <= 180 ? changeRotation(90) : changeRotation(this._robotOrientation * -1);
         return;
-      case "ROTATE_LEFT":
-        this._robotOrientation >= -180
-          ? changeRotation(-90)
-          : changeRotation(this._robotOrientation * -1);
+      case 'ROTATE_LEFT':
+        this._robotOrientation >= -180 ? changeRotation(-90) : changeRotation(this._robotOrientation * -1);
         return;
-      case "FORWARD": {
+      case 'FORWARD': {
         changePosition();
         return;
       }

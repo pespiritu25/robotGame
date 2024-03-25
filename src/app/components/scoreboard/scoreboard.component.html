@@ -1,11 +1,12 @@
 <div class="scoreboard">
-  <button mat-mini-fab color="primary"
-          [matTooltip]="'Leaderboard'"
-          [matTooltipPosition]="'above'"
-          (click)="openLeaderboard()"
+  <button
+    mat-mini-fab
+    color="primary"
+    [matTooltip]="'Leaderboard'"
+    [matTooltipPosition]="'above'"
+    (click)="openLeaderboard()"
   >
     <mat-icon>leaderboard</mat-icon>
   </button>
-  <h1>Score: {{gameService.currentGameScore}}</h1>
+  <h1>Score: {{ gameService.currentGameScore }}</h1>
 </div>
-

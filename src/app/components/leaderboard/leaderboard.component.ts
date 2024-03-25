@@ -1,14 +1,17 @@
 import { Component } from '@angular/core';
-import {LeaderboardService} from "../../services/leaderboard.service";
+import { LeaderboardService } from '../../services/leaderboard.service';
 import {
-  MatCell, MatCellDef,
+  MatCell,
+  MatCellDef,
   MatColumnDef,
   MatHeaderCell,
   MatHeaderCellDef,
-  MatHeaderRow, MatHeaderRowDef,
-  MatRow, MatRowDef,
-  MatTable
-} from "@angular/material/table";
+  MatHeaderRow,
+  MatHeaderRowDef,
+  MatRow,
+  MatRowDef,
+  MatTable,
+} from '@angular/material/table';
 
 @Component({
   selector: 'app-leaderboard',
@@ -23,13 +26,12 @@ import {
     MatHeaderCellDef,
     MatCellDef,
     MatHeaderRowDef,
-    MatRowDef
+    MatRowDef,
   ],
   templateUrl: './leaderboard.component.html',
-  styleUrl: './leaderboard.component.scss'
+  styleUrl: './leaderboard.component.scss',
 })
 export class LeaderboardComponent {
-
   displayedColumns = ['userName', 'userScore'];
   dataSource = this.leaderboardService.listData();
   constructor(private leaderboardService: LeaderboardService) {}

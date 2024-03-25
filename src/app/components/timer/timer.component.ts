@@ -1,12 +1,12 @@
-import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
-import {GameService} from "../../services/game.service";
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { GameService } from '../../services/game.service';
 
 @Component({
   selector: 'app-timer',
   standalone: true,
   imports: [],
   templateUrl: './timer.component.html',
-  styleUrl: './timer.component.scss'
+  styleUrl: './timer.component.scss',
 })
 export class TimerComponent implements OnInit {
   @Input() milliseconds: number = 60000;
@@ -21,15 +21,15 @@ export class TimerComponent implements OnInit {
 
   ngOnInit() {
     this.gameService.gameState.subscribe((state) => {
-        switch (state) {
-          case "GAME_START": {
-            this.beginCountdown();
-            break;
-          }
-          case "GAME_OVER": {
-            this.resetCountdown();
-          }
+      switch (state) {
+        case 'GAME_START': {
+          this.beginCountdown();
+          break;
         }
+        case 'GAME_OVER': {
+          this.resetCountdown();
+        }
+      }
     });
   }
 
@@ -56,8 +56,8 @@ export class TimerComponent implements OnInit {
 
   generateDisplay(ms: number) {
     const generate = (value) => {
-      return new Date(value).toISOString().slice(14,19);
-    }
+      return new Date(value).toISOString().slice(14, 19);
+    };
     this.display = this.start ? generate(ms) : generate(this.milliseconds);
   }
 }

@@ -5,7 +5,6 @@
     </button>
   </ng-container>
 
-
   <ng-container *ngIf="controlService.controlUIMode === 'GAME'">
     <button mat-mini-fab color="primary" (click)="currentGameControlInput.emit('ROTATE_LEFT')">
       <mat-icon>rotate_left</mat-icon>
@@ -25,5 +24,4 @@
       <mat-icon>restart_alt</mat-icon>
     </button>
   </ng-container>
-
 </div>

@@ -1,9 +1,8 @@
-import {Injectable} from "@angular/core";
+import { Injectable } from '@angular/core';
 
 @Injectable({
   providedIn: 'root',
 })
-
 export class LeaderboardService {
   localStorageKey = 'srg-leaderboard';
 
@@ -18,8 +17,8 @@ export class LeaderboardService {
     const parseList: any[] = JSON.parse(localStorage.getItem(this.localStorageKey));
     return parseList?.length
       ? parseList.sort((a, b) => {
-        return b.userScore - a.userScore
-      })
+          return b.userScore - a.userScore;
+        })
       : [];
   }
 }

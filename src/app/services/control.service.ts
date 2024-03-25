@@ -1,10 +1,9 @@
-import {Injectable} from "@angular/core";
-import {ControlUIMode} from "../typings/generic-types";
+import { Injectable } from '@angular/core';
+import { ControlUIMode } from '../typings/generic-types';
 
 @Injectable({
   providedIn: 'root',
 })
-
 export class ControlService {
   private _controlUIMode: ControlUIMode = 'START';
 
